@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thyme leaf.org" lang="en">
+
+<head>
+    <title>Coronavirus Tracker Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <style>
+        .map {
+
+        }
+    </style>
+</head>
+
+<body style="font-family:'Montserrat', sans-serif;">
+<p th:text="${testName}"></p>
+
+<h1 style="background: beige">Covid-19 Cases Tracker</h1>
+
+<div class="container" style="display: flex; justify-content: center">
+    <a href="#country" style="margin-left: 20px; margin-right: 20px; background: beige; border: none; color: black" class="btn btn-primary btn-lg " tabindex="-1" role="button" aria-disabled="true">Covid-19 Cases of Countries</a>
+    <a href="#india" style="margin-left: 20px; margin-right: 20px; background: beige; border: none; color: black" class="btn btn-primary btn-lg " tabindex="-1" role="button" aria-disabled="true">Covid-19 Cases of India</a>
+    <a href="#vaccine" style="margin-left: 20px; margin-right: 20px; background: beige; border: none; color: black" class="btn btn-primary btn-lg " tabindex="-1" role="button" aria-disabled="true">Vaccination Status of Countries</a>
+</div>
+
+<br><br>
+
+<div>
+    <h3 id="country" style="background: #E0FAD5">Covid-19 Cases of Countries</h3>
+    <div class="container">
+    <table class="table table-success table-striped table-bordered" id="mytable1" style="width: 70%;">
+        <thead>
+        <tr>
+            <th>Continent</th>
+            <th>Country</th>
+            <th>Cumulative_cases</th>
+            <th>Cumulative_deaths</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.continent}"></td>
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.cumulative_cases}"></td>
+            <td th:text="${locationStat.cumulative_deaths}"></td>
+        </tr>
+        </tbody>
+    </table>
+        <div class="container">
+            <h5>Map of total confirmed cases by country.</h5>
+            <p>
+                <a href="https://commons.wikimedia.org/wiki/File:COVID-19_Outbreak_World_Map.svg#/media/File:COVID-19_Outbreak_World_Map.svg">
+                    <img style="height: 500px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/COVID-19_Outbreak_World_Map.svg/1200px-COVID-19_Outbreak_World_Map.svg.png" alt="COVID-19 Outbreak World Map.svg">
+                </a>
+                <br>
+                <a href="https://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0"></a>,
+                <a href="https://commons.wikimedia.org/w/index.php?curid=86236603"></a>
+            </p>
+            <p>Map of total confirmed deaths by country.</p>
+            <p>
+                <a href="https://commons.wikimedia.org/wiki/File:Cumulative_confirmed_COVID-19_deaths,_OWID.svg#/media/File:Cumulative_confirmed_COVID-19_deaths,_OWID.svg">
+                    <img style="height: 500px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Cumulative_confirmed_COVID-19_deaths%2C_OWID.svg/1200px-Cumulative_confirmed_COVID-19_deaths%2C_OWID.svg.png" alt="Cumulative confirmed COVID-19 deaths, OWID.svg">
+                </a>
+                <br>
+                <a href="https://creativecommons.org/licenses/by/4.0" title="Creative Commons Attribution 4.0"></a>,
+                <a href="https://commons.wikimedia.org/w/index.php?curid=106990630"></a>
+            </p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<h3 id="india" style="background: #E0FAD5">Covid-19 Cases of India</h3>
+<div class="container">
+    <div class="row">
+    <table class="table table-dark table-striped table-bordered" id="mytable2" style="width: 70%">
+        <thead>
+        <tr>
+
+            <th>India_Region</th>
+            <th>India_Confirmed_Cases</th>
+            <th>India_Active_Cases</th>
+            <th>India_Cured_Discharged</th>
+            <th>India_Active_Cases</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="locationStat : ${locationStats}">
+
+            <td th:text="${locationStat.India_Region}"></td>
+            <td th:text="${locationStat.India_Confirme_Cases}"></td>
+            <td th:text="${locationStat.India_Active_Cases}"></td>
+            <td th:text="${locationStat.India_Cured_Discharged}"></td>
+            <td th:text="${locationStat.India_Active_Cases}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+        <div class="container" style="">
+            <h5>Map of total cases in India.</h5>
+            <p>
+                <a href="https://commons.wikimedia.org/wiki/File:India_COVID-19_cases_density_map.svg#/media/File:India_COVID-19_cases_density_map.svg">
+                <img style="height: 500px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/India_COVID-19_cases_density_map.svg/1200px-India_COVID-19_cases_density_map.svg.png" alt="India COVID-19 cases density map.svg">
+                </a>
+                <br>,
+                <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0"></a>,
+                <a href="https://commons.wikimedia.org/w/index.php?curid=90248549"></a>
+            </p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<h3 id="vaccine" style="background: #E0FAD5">Vaccination Status of Countries</h3>
+<div class="container">
+    <div class="row">
+    <table class="table table-active table-striped table-bordered" id="mytable3" style="width: 70%">
+        <thead>
+        <tr>
+
+            <th>Vac_Countries</th>
+            <th>TOTAL_VACCINATION</th>
+            <th>VACCINES_USED</th>
+            <th>VACCINES_USED_NAME</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="locationStat : ${locationStats}">
+
+            <td th:text="${locationStat.Vac_Countries}"></td>
+            <td th:text="${locationStat.TOTAL_VACCINATION}"></td>
+            <td th:text="${locationStat.VACCINES_USED}"></td>
+            <td th:text="${locationStat.VACCINES_USED_NAME}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+        <div class="container" >
+            <p>Share of population which is fully vaccinated against COVID-19 by country relative to its population</p>
+            <p>
+                <a href="https://commons.wikimedia.org/wiki/File:World_map_of_share_of_people_who_received_all_doses_prescribed_by_the_initial_COVID-19_vaccination_protocol.png#/media/File:World_map_of_share_of_people_who_received_all_doses_prescribed_by_the_initial_COVID-19_vaccination_protocol.png">
+                    <img style="height: 500px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/World_map_of_share_of_people_who_received_all_doses_prescribed_by_the_initial_COVID-19_vaccination_protocol.png/1200px-World_map_of_share_of_people_who_received_all_doses_prescribed_by_the_initial_COVID-19_vaccination_protocol.png" alt="World map of share of people who received all doses prescribed by the initial COVID-19 vaccination protocol.png">
+                </a>
+                <br>
+                <a href="https://creativecommons.org/licenses/by-sa/4.0" title="Creative Commons Attribution-Share Alike 4.0"></a>,
+                <a href="https://commons.wikimedia.org/w/index.php?curid=108709652"></a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#mytable1').DataTable();
+    } );
+</script>
+<script>
+    $(document).ready(function() {
+        $('#mytable2').DataTable();
+    } );
+</script>
+<script>
+    $(document).ready(function() {
+        $('#mytable3').DataTable();
+    } );
+</script>
+
+</body>
+
+</html>
