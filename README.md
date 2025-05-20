@@ -1,6 +1,3 @@
-Here is the complete `README.md` markdown content for your **COVID-19 Cases Tracker** project, fully polished and ready to copy-paste into your GitHub repository:
-
-```markdown
 # 🦠 COVID-19 Cases Tracker
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
