@@ -1,87 +1,106 @@
-# 🦠 COVID-19 Cases Tracker
+# 🦠 COVID-19 Cases Tracker (Java Web App)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Python](https://img.shields.io/badge/Python-3.7%2B-blue.svg)
-![Data Visualization](https://img.shields.io/badge/Visualized%20With-Matplotlib%20%7C%20Plotly-orange.svg)
-![Live Data](https://img.shields.io/badge/Data-Live%20from%20API-green.svg)
+![Built with](https://img.shields.io/badge/Built%20With-Java%20%7C%20Spring%20Boot%20%7C%20Thymeleaf-blue.svg)
+![UI Framework](https://img.shields.io/badge/UI-Bootstrap%205-lightgrey.svg)
 
 ---
 
 ## 📊 Project Overview
 
-This project is a **real-time COVID-19 tracking and visualization tool** built in Python. It fetches **up-to-date global COVID-19 statistics** (cases, deaths, recoveries) from public APIs and visualizes trends using clear and interactive charts.
+This is a **Spring Boot web application** that tracks and displays **global and regional COVID-19 data** using an interactive frontend powered by **Thymeleaf** and **Bootstrap 5**.
 
-Designed to provide a quick overview of the global pandemic situation and support region-specific analysis.
-
----
-
-## 🌐 Features
-
-- 📥 Fetches real-time data using public COVID APIs
-- 🌎 Displays global stats and allows country-specific filtering
-- 📈 Generates visualizations (line charts, bar plots, pie charts)
-- 📅 Tracks new vs. total confirmed cases over time
-- 💡 Extensible for predictive modeling or alert dashboards
+The application fetches up-to-date case statistics, vaccination data, and provides dynamic tables segmented by:
+- 🌍 Countries & Continents
+- 🇮🇳 Indian regions
+- 💉 Vaccine usage and coverage
 
 ---
 
-## 🛠️ Tech Stack
+## 🔍 Key Features
 
-| Layer         | Tools / Libraries                  |
-|---------------|-------------------------------------|
-| Data Fetching | `requests`, `pandas`                |
-| Visualization | `matplotlib`, `plotly`, `seaborn`   |
-| Backend Logic | Python 3.7+                         |
-| API Source    | NovelCOVID API / RapidAPI (optional) |
+- 🌐 Global COVID-19 case & death data by continent and country
+- 🇮🇳 India-specific active, confirmed, and cured cases by state/region
+- 💉 Vaccination statistics and vaccine distribution insights
+- 🗺️ Integrated data visualizations with world/India maps
+- 🔄 Auto-populated tables via Thymeleaf templating
+- 📊 Enhanced interactivity with DataTables.js
 
 ---
 
-## 🗂️ Project Structure
+## 🧱 Tech Stack
+
+| Layer           | Technologies Used                              |
+|------------------|------------------------------------------------|
+| Backend          | Java 11, Spring Boot                          |
+| Frontend         | HTML5, Thymeleaf, Bootstrap 5                 |
+| Styling & Tables | Bootstrap, DataTables                         |
+| Data Processing  | Java Services & POJOs                         |
+| Deployment       | Spring Boot embedded server (Tomcat)         |
+
+---
+
+## 🗂 Project Structure
 
 ```
 
-Covid\_cases\_tracker/
-├── covid\_tracker.py              # 🔁 Main script to fetch & visualize COVID data
-├── requirements.txt              # 📦 Python dependencies
-├── plots/                        # 📊 Output folder for graphs (optional)
-├── README.md                     # 📘 Project documentation
+Covid-Case-Tracker/
+├── src/main/java/
+│   ├── controller/
+│   │   └── HomeController.java
+│   ├── model/
+│   │   └── LocationStats.java
+│   ├── service/
+│   │   └── CoronaVirusDataService.java
+│   └── application/
+│       └── CoronavirusTrackerApplication.class
+├── src/main/resources/templates/
+│   └── home.html                   # Thymeleaf UI Template
+├── static/                         # Bootstrap, JS, CSS assets (CDN linked)
+├── pom.xml                         # Maven build configuration
+└── README.md
 
 ````
 
 ---
 
-## 📈 Sample Visuals
+## 📸 Preview
 
-- Global case trend over time
-- Country-specific comparison chart
-- Pie chart for active vs. recovered vs. deaths
-- Bar plot of top 10 countries by case count
+### 🌍 Global Case Summary
+Displays cumulative cases and deaths by continent and country.
+![Map](https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/COVID-19_Outbreak_World_Map.svg/1200px-COVID-19_Outbreak_World_Map.svg.png)
 
-> *(Add screenshots in the `plots/` folder and reference them here for visuals)*
+### 🇮🇳 India Case Breakdown
+Shows total, active, and recovered cases by Indian state.
+![India Map](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/India_COVID-19_cases_density_map.svg/1200px-India_COVID-19_cases_density_map.svg.png)
 
 ---
 
 ## ▶️ How to Run
 
-### 1. Clone the repository
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/hittanshubhanderi20/Covid_cases_tracker.git
 cd Covid_cases_tracker
 ````
 
-### 2. Install dependencies
+### 2. Open in your IDE (e.g., IntelliJ or Eclipse)
+
+### 3. Run the Spring Boot Application
+
+Use `CoronavirusTrackerApplication` class or:
 
 ```bash
-pip install -r requirements.txt
+mvn spring-boot:run
 ```
 
-### 3. Run the script
+### 4. Visit the Web App
 
-```bash
-python covid_tracker.py
+```
+http://localhost:8080/
 ```
 
-You will see printed outputs and generated charts saved (or displayed) based on the script’s configuration.
+You’ll see a dashboard with interactive tables and maps.
 
 ---
 
